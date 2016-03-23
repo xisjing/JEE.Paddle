@@ -1,5 +1,6 @@
 package data.entities;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -22,6 +23,8 @@ public class Token {
     @ManyToOne
     @JoinColumn
     private User user;
+    
+    private long calendar;
 
     public Token() {
     }
@@ -31,6 +34,7 @@ public class Token {
         this.user = user;
         this.value = new Encrypt().encryptInBase64UrlSafe("" + user.getId() + user.getUsername() + Long.toString(new Date().getTime())
                 + user.getPassword());
+        
     }
 
     public int getId() {
@@ -68,4 +72,13 @@ public class Token {
     public String toString() {
         return "Token [id=" + id + ", value=" + value + ", userId=" + user.getId() + "]";
     }
+
+	public long getCalendar() {
+		return calendar;
+	}
+	
+	public void setCalendar(long calendar) {
+		this.calendar = Calendar.getInstance().getTimeInMillis()+ 3600000;
+			
+	}
 }
