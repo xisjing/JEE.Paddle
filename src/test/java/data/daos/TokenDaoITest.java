@@ -35,8 +35,9 @@ public class TokenDaoITest {
     }
     
     @Test
-    public void testDeletByTime() {
-    	
+    public void testDeleteByTime() {
+    	long date = Calendar.getInstance().getTimeInMillis();
+    	tokenDao.deleteByTime(date);  	
     }
 
 }
