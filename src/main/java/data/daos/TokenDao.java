@@ -10,6 +10,6 @@ public interface TokenDao extends JpaRepository<Token, Integer> {
 
     Token findByUser(User user);
     
-    @Query("delete token.calendar from Token token where token.calender < = ?1")
-    void deleteByTime(long canlender);
+    @Query("delete from Token token where token.calendar < ?1")
+    void deleteByTime(long calendar);
 }

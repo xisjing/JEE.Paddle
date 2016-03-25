@@ -24,6 +24,7 @@ public class Token {
     @JoinColumn
     private User user;
     
+    @Column
     private long calendar;
 
     public Token() {
@@ -48,6 +49,10 @@ public class Token {
     public User getUser() {
         return user;
     }
+    
+    public long getCalendar() {
+		return calendar = Calendar.getInstance().getTimeInMillis()+ 3600000;
+	}
 
     @Override
     public int hashCode() {
@@ -73,12 +78,6 @@ public class Token {
         return "Token [id=" + id + ", value=" + value + ", userId=" + user.getId() + "]";
     }
 
-	public long getCalendar() {
-		return calendar;
-	}
 	
-	public void setCalendar(long calendar) {
-		this.calendar = Calendar.getInstance().getTimeInMillis()+ 3600000;
-			
-	}
+	
 }

@@ -34,10 +34,12 @@ public class TokenDaoITest {
         assertNull(tokenDao.findByUser(user));
     }
     
+    
     @Test
-    public void testDeleteByTime() {
-    	long date = Calendar.getInstance().getTimeInMillis();
-    	tokenDao.deleteByTime(date);  	
+     public void testDeleteByTime() {
+     long date = Calendar.getInstance().getTimeInMillis();
+     tokenDao.deleteByTime(date);  	
     }
+    
 
 }
