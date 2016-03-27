@@ -6,9 +6,6 @@ import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 
 @Entity
 public class Training {
@@ -17,18 +14,18 @@ public class Training {
 	@GeneratedValue
     private int id;
 	
-    //如何区分Player和Trainer
-	@ManyToOne
-    @JoinColumn
-	private User user;
+	private User trainer;
+	
+	private User player;
 	
 	private Court court;
 	
 	private Calendar trainingDate;
 	
-	public Training(Court court, User user, Calendar trainingDate) {
+	public Training(Court court, User player, User trainer, Calendar trainingDate) {
         this.court = court;
-        this.user = user;
+        this.player = player;
+        this.trainer = trainer;
         this.trainingDate = trainingDate;
     }
 	
@@ -36,15 +33,7 @@ public class Training {
     	return id;
     }
     
-    public User getUser() {
-        return user;
-    }
-    
-    //为什么只有User有setUser（）
-    public void setUser(User user) {
-        this.user = user;
-    }
-	
+   
 	public Court getCourt() {
 		return court;
 	}
@@ -75,8 +64,24 @@ public class Training {
 	    @Override
 	    public String toString() {
 	        String time = new SimpleDateFormat("HH:00 dd-MMM-yyyy ").format(trainingDate.getTime());
-	        return "Training [id=" + id + ", courtId=" + court.getId() + ", user=" + user.getId() + ", date=" + time + "]";
+	        return "Training [id=" + id + ", courtId=" + court.getId() + ", player =" + player.getId() + ", trainer =" + trainer.getId() + ", date=" + time + "]";
 	    }
+
+		public User getTrainer() {
+			return trainer;
+		}
+
+		public void setTrainer(User trainer) {
+			this.trainer = trainer;
+		}
+
+		public User getPlayer() {
+			return player;
+		}
+
+		public void setPlayer(User player) {
+			this.player = player;
+		}
 
 	}
 
