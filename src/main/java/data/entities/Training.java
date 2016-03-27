@@ -75,7 +75,7 @@ public class Training {
 	    @Override
 	    public String toString() {
 	        String time = new SimpleDateFormat("HH:00 dd-MMM-yyyy ").format(trainingDate.getTime());
-	        return "Training [id=" + id + ", courtId=" + court.getId() + ", date=" + time + "]";
+	        return "Training [id=" + id + ", courtId=" + court.getId() + ", user=" + user.getId() + ", date=" + time + "]";
 	    }
 
 	}
