@@ -17,6 +17,7 @@ public class Training {
 	@GeneratedValue
     private int id;
 	
+    //如何区分Player和Trainer
 	@ManyToOne
     @JoinColumn
 	private User user;
