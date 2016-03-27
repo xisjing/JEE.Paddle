@@ -35,6 +35,8 @@ public class Token {
         this.user = user;
         this.value = new Encrypt().encryptInBase64UrlSafe("" + user.getId() + user.getUsername() + Long.toString(new Date().getTime())
                 + user.getPassword());
+        this.calendar = Calendar.getInstance().getTimeInMillis() + 3600000;
+        
         
     }
 
@@ -51,7 +53,7 @@ public class Token {
     }
     
     public long getCalendar() {
-		return calendar = Calendar.getInstance().getTimeInMillis()+ 3600000;
+		return calendar;
 	}
 
     @Override
