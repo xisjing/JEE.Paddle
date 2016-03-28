@@ -1,12 +1,13 @@
 package data.entities;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -21,7 +22,7 @@ public class Training {
 	@GeneratedValue
     private int id;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "players")
+	@OneToMany
     private List<User> players;
 		
 	@ManyToOne
@@ -40,7 +41,7 @@ public class Training {
 	
 	public Training(Court court, List<User> players, User trainer, Calendar trainingDate) {
         this.court = court;
-        this.players = players;
+        this.players = new ArrayList<User>();
         this.trainer = trainer;
         this.trainingDate = trainingDate;
     }
@@ -62,7 +63,7 @@ public class Training {
 	}
 
 	public void setPlayers(List<User> players) {
-		this.players = players;
+		this.players = new ArrayList<User>();
 	}
 	
 	public Court getCourt() {
