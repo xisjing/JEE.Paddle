@@ -35,9 +35,6 @@ public class Training {
 	
 	private Calendar trainingDate;
 
-	public Training(){
-		
-	}
 	
 	public Training(Court court, List<User> players, User trainer, Calendar trainingDate) {
         this.court = court;
@@ -45,6 +42,15 @@ public class Training {
         this.trainer = trainer;
         this.trainingDate = trainingDate;
     }
+	
+	public Training(Court court,Calendar trainingDate){
+		this(court,null,null,trainingDate);
+		
+	}
+	
+	public Training(){
+		
+	}
 	
 	public int getId() {
 		return id;
@@ -62,6 +68,7 @@ public class Training {
 		return players;
 	}
 
+	//? this.players = players;
 	public void setPlayers(List<User> players) {
 		this.players = new ArrayList<User>();
 	}
@@ -70,17 +77,10 @@ public class Training {
 		return court;
 	}
 
-	public void setCourt(Court court) {
-		this.court = court;
-	}
-	
 	public Calendar getTrainingDate() {
 		return trainingDate;
 	}
 
-	public void setTrainingDate(Calendar trainingDate) {
-		this.trainingDate = trainingDate;
-	}
 
 	 @Override
 	  public boolean equals(Object obj) {
@@ -95,7 +95,6 @@ public class Training {
 	        }
 	        return id == ((Training) obj).id;
 	    }
-
 	    @Override
 	    public String toString() {
 	        String time = new SimpleDateFormat("HH:00 dd-MMM-yyyy ").format(trainingDate.getTime());
