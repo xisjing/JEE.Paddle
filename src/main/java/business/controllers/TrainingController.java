@@ -11,10 +11,13 @@ import data.daos.CourtDao;
 import data.daos.TrainingDao;
 import data.daos.UserDao;
 import data.entities.Training;
-import data.entities.User;
 
 @Controller
 public class TrainingController {
+	
+	private static final int START_TIME = 9;
+
+    private static final int END_TIME = 23;
 	
 	private TrainingDao trainingDao;
 	
@@ -36,6 +39,10 @@ public class TrainingController {
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
+	
+	public boolean rightTime(int hour) {
+        return hour >= START_TIME && hour <= END_TIME;
+    }
 		
 	
 	 public boolean createTraining(int courtId, Calendar trainingDate, String trainer) {
@@ -63,10 +70,6 @@ public class TrainingController {
 		 return true;		 
 	 }
 	 
-	 public boolean registerTraining(int trainingId,List<User> player){
-		 trainingDao.findOne(trainingId).setPlayers(player);
-		 return true;		 
-	 }
 	 
 	 public List<Training> showTrainings(){
 		 List<Training> trainingList = new ArrayList<>();
