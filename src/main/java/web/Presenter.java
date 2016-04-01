@@ -6,16 +6,12 @@ import java.util.Date;
 import java.util.List;
 
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import org.springframework.web.bind.annotation.CookieValue;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,14 +51,6 @@ public class Presenter {
     public ModelAndView theme(@RequestParam String theme) {
         this.theme = theme;
         return new ModelAndView(theme + "/home", "themes", THEMES);
-    }
-
-    @RequestMapping(value = "/greeting")
-    public String greeting(@CookieValue("JSESSIONID") Cookie cookie, HttpServletRequest request, Model model) {
-        model.addAttribute("stringList", Arrays.asList("uno", "dos", "tres"));
-        model.addAttribute("cookie", cookie.getName());
-        model.addAttribute("ip", request.getRemoteAddr());
-        return theme + "/greeting";
     }
 
     @RequestMapping("/user-list")
