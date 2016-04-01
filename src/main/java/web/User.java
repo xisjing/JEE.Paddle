@@ -6,6 +6,8 @@ import java.util.Calendar;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 public class User {
 
 	@NotNull
@@ -34,7 +36,7 @@ public class User {
         this.id = id;
         this.username = username;
         this.email = email;
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password);
         this.birthDate = birthDate ;
         this.active = true;
     }
